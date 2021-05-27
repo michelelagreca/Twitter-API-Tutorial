@@ -20,7 +20,11 @@ During the last years, Twitter became very important and its popolarity is incre
 ## Twitter Developer Platform
 Twitter, as well as many social networks, provides to users __API (Application Programming Interfaces)__.
 ### API
-APIs are tools used to facilitate the interaction between developers and platforms. They are useful when developers would like to use some elements of this social network with ease, to make the work faster. There are many types of API which are able to extend and improve the functions of a software. This tool, moreover, allows the interaction between programmes and software, with the possibility to create more professional features.
+APIs are tools used to facilitate the interaction between developers and platforms. They are useful when developers would like to use some elements of this social network with ease, to make the work faster. There are many types of API which are able to extend and improve the functions of a software. This tool, moreover, allows the interaction between programmes and software, with the possibility to create more professional features.<br>
+
+How can APIs be used? How can a software interract with APIs? The relationship created between APIs and a software is similar to what happens in the Web server-Client paradigm: to request a service or data, the client generally sends a message to a server, which respondes with the desired result. The same thing happens between APIs and softwares. Clearly, the sofware has to be authentificated to access to the server data.<br>
+
+To make these requests, __REST__ (Representational State Transfer) is used. It is the way to made the requests between softwares and APIs. REST uses some protocols such as HTTP. For instance, if a sofware needs to use an API, HTTP is used to define the structure of the request and the response. In this scenario, the server (API) respondes to the sofware not with a HTML page, but with structured data in a specific format, such as Json.
 ### Twitter API
 Twitter API allow its service to be accessed via APIs to enable software development that integrates with Twitter, such as a solution that helps a company respond to customer feedback on Twitter. They also allow users to deal with Tweets is a easier way. <br>
 
