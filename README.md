@@ -44,11 +44,37 @@ Starting to use Twitter API requires some steps:
 
 ![](/images/login2.JPG)
 
-* Now go again to the Developer Platform [page](https://developer.twitter.com/en). in the top right section of the page there will be a [link](https://developer.twitter.com/en/apply-for-access) to apply for a developer account<br>
+* Now go again to the Developer Platform [page](https://developer.twitter.com/en). In the top right section of the page there will be a [link](https://developer.twitter.com/en/apply-for-access) to apply for a developer account<br>
 
 ![](/images/apply.JPG)
 
-*
+* After clicking apply, click to the choice 'Apply for a developer account'<br>
+
+![](/images/apply2.JPG)
+
+* In the next page, choose the option 'Academic', 'Student' and then click on 'Get started'<br>
+
+![](/images/apply3.JPG)
+
+* Once you reach the next page, fill the infos and then click on 'Next'<br>
+
+![](/images/apply4.JPG)
+
+* In the next page, insert the reasons why APIs are going to be used<br>
+
+![](/images/apply5.JPG)
+
+* Then, there will be a 'Review' page where it is possible to check one more time the informations <br>
+
+![](/images/apply6.JPG)
+
+* After agree to the term, the access request will be submitted<br>
+
+![](/images/apply7.JPG)
+
+* ciao
+
+
 
 
 
