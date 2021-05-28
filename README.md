@@ -84,6 +84,10 @@ Starting to use Twitter API requires some steps:
 
 ![](/images/pro5.JPG)<br><br><br>
 
+__NB.__ Note that I already had a Twitter Developer Profile, and I'm going to use that. If a standard developer profile is already available, it is possible to directly create a __standalone app__ outside any project
+
+![](/images/api2.JPG)<br><br><br>
+
 
 
 
