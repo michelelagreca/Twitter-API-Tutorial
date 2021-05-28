@@ -88,6 +88,7 @@ __NB.__ Note that I already had a Twitter Developer Profile, and I'm going to us
 
 ![](/images/api2.JPG)<br><br><br>
 
+However, since standalone apps can't use v2 Early Access endpoints, for this tutorial i will use the Twitter Developer Profile i have created during the previous procedure.
 
 
 
