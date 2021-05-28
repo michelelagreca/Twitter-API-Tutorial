@@ -42,9 +42,13 @@ Starting to use Twitter API requires some steps:
 
 * After clicking on sign in, create a Twitter account if there is not one available, then click access<br>
 
-![])(/images/login2.JPG)
+![](/images/login2.JPG)
 
-* Now go again to the Developer Platform [page](https://developer.twitter.com/en)<br>
+* Now go again to the Developer Platform [page](https://developer.twitter.com/en). in the top right section of the page there will be a [link](https://developer.twitter.com/en/apply-for-access) to apply for a developer account<br>
+
+![](/images/apply.JPG)
+
+*
 
 
 
