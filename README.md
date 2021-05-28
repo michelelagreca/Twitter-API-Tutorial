@@ -36,7 +36,17 @@ Usually, Twitter API are used to:
 
 ### How to access to Twitter API
 Starting to use Twitter API requires some steps:
-* Firstly, it's needed to create a Twitter account if there is not one available. It is possible to do it by this [link](https://twitter.com/).
+* Firstly, go to the Developer Platform [page](https://developer.twitter.com/en) and click on sign in (top right)<br>
+
+![](/images/login.JPG)
+
+* After clicking on sign in, create a Twitter account if there is not one available, then click access<br>
+
+![])(/images/login2.JPG)
+
+* Now go again to the Developer Platform [page](https://developer.twitter.com/en)<br>
+
+
 
 
 
