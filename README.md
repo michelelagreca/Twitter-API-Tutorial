@@ -38,47 +38,66 @@ Usually, Twitter API are used to:
 Starting to use Twitter API requires some steps:
 * Firstly, go to the Developer Platform [page](https://developer.twitter.com/en) and click on sign in (top right)<br>
 
-![](/images/login.JPG)
+![](/images/login.JPG)<br><br><br>
 
 * After clicking on sign in, create a Twitter account if there is not one available, then click access<br>
 
-![](/images/login2.JPG)
+![](/images/login2.JPG)<br><br><br>
 
 * Now go again to the Developer Platform [page](https://developer.twitter.com/en). In the top right section of the page there will be a [link](https://developer.twitter.com/en/apply-for-access) to apply for a developer account<br>
 
-![](/images/apply.JPG)
+![](/images/apply.JPG)<br><br><br>
 
 * After clicking apply, click to the choice 'Apply for a developer account'<br>
 
-![](/images/apply2.JPG)
+![](/images/apply2.JPG)<br><br><br>
 
 * In the next page, choose the option 'Academic', 'Student' and then click on 'Get started'<br>
 
-![](/images/apply3.JPG)
+![](/images/apply3.JPG)<br><br><br>
 
 * Once you reach the next page, fill the infos and then click on 'Next'<br>
 
-![](/images/apply4.JPG)
+![](/images/apply4.JPG)<br><br><br>
 
 * In the next page, insert the reasons why APIs are going to be used<br>
 
-![](/images/apply5.JPG)
+![](/images/apply5.JPG)<br><br><br>
 
 * Then, there will be a 'Review' page where it is possible to check one more time the informations <br>
 
-![](/images/apply6.JPG)
+![](/images/apply6.JPG)<br><br><br>
 
 * After agree to the term, the access request will be submitted<br>
 
-![](/images/apply7.JPG)
+![](/images/apply7.JPG)<br><br><br>
 
-* ciao
+* After have verificated the email __(the verification has to be done via browser)__, a project has to be created
+
+![](/images/api1.JPG)<br><br><br>
+
+* Insert the informations about the project and the name of the App which will be created inside the project
+
+![](/images/pro1.JPG)![](/images/pro2.JPG)![](/images/pro3.JPG)![](/images/pro4.JPG)<br><br><br>
+
+* After that, informations about API Key and API secret Key will be available. Note that this infos should be kept __secret__.
+
+![](/images/pro5.JPG)<br><br><br>
 
 
 
 
 
 
+
+## Keys
+API Key: ED4UO5J46cH9I53sqexmWwLjD
+API Secret Key: yqdkgb7IJ74fhsPdToQCJpLvv7mRbD17OA8bQVrcLbfdDvLPdH
+Bearer Token: AAAAAAAAAAAAAAAAAAAAAMRsQAEAAAAAML9EySYB7m6g84HM0Zetd7JfU50%3DdZGqD3291tdC71hDsubvnlBSCzLyTcHdcbcbtoeD2CkP1WSd5L
+
+API Key: hKRt285say4MonaRbgY2mvIXe
+API Secret Key: s5Y09TDdb9HY2EZq0HhfzymaYeAjtTzg0IucPASZoEwtbVo0pX
+Bearer Token: AAAAAAAAAAAAAAAAAAAAAOBsQAEAAAAAAp2LPnDkcVJbl1YUz129t7F2W5U%3DnqQ8Y0ISn1wADKCZ9VsmHEj7gGmEn0zXNsPzTzmVswvvLEizs2
 
 
 ## References
