@@ -84,10 +84,9 @@ Starting to use Twitter API requires some steps:
 
 ![](/images/pro5.JPG)<br><br><br>
 
-__NB.__ Note that I already had a Twitter Developer Profile, and I'm going to use that. If a standard developer profile is already available, it is possible to directly create a __standalone app__ outside any project
+> __Note__ Note that I already had a Twitter Developer Profile, and I'm going to use that. If a standard developer profile is already available, it is possible to directly create a __standalone app__ outside any project<br><br>![](/images/api2.JPG)
 
-![](/images/api2.JPG)<br><br><br>
-
+<br><br>
 However, since standalone apps can't use v2 Early Access endpoints, for this tutorial i will use the Twitter Developer Profile i have created during the previous procedure.<br>
 ## Projects and Apps
 It is possible to use Apps and Projects to help organize the work with the Twitter Developer Platform by use case. Each Project can contain a single app at this point in time. To access the new Twitter API v2 endpoints, it is needed to use credentials from an App that is associated with a project.
@@ -103,22 +102,49 @@ OAuth is an open standard for access delegation, commonly used as a way for Inte
 Generally, OAuth provides clients a "secure delegated access" to server resources on behalf of a resource owner. It specifies a process for resource owners to authorize third-party access to their server resources without providing credentials. Designed specifically to work with Hypertext Transfer Protocol (HTTP), OAuth essentially allows access tokens to be issued to third-party clients by an authorization server, with the approval of the resource owner. The third party then uses the access token to access the protected resources hosted by the resource server [3].<br><br>
 
 # Twitter API Example
+This section will focus on an example which will explain how to interact with Twitter API. The library that is going to be used is __python-twitter__. This library provides a pure Python interface for the Twitter API.
+## Installation
+To install the library, go on the terminal and execute:
+
+    pip install python-twitter
+    
+## Authentication
+In order to use the python-twitter API client, you first need to acquire a set of application tokens. These will be your consumer_key and consumer_secret, which get passed to twitter.Api() when starting your application [4]. To get these key, creating an App is necessary. After that, go in that App and click the 'Keys and tokens' section to get the keys.<br>
+
+Then, open a Python file, import twitter and call the function twitter.Api(), passing the keys
+
+    import twitter
+    import twitter
+    api = twitter.Api(consumer_key=[consumer key],
+                  consumer_secret=[consumer secret],
+                  access_token_key=[access token],
+                  access_token_secret=[access token secret])
+                  
+It is also possible to get a Bearer token with GetAppOnlyAuthToken(consumer_key, consumer_secret)
+
+    twitter.Api().GetAppOnlyAuthToken(consumer_key, consumer_secret)
+
+The response will be a Json such as
+
+    {'token_type': 'bearer',
+    'access_token': 'AAAAAAAAAAAAAAAAAAAAAMR...'}
+    
+> __Note__ It is necessary to replace the real keys in place of the sections in square brackets
+## Search Tweets
+To search a specific tweet it is possible to use the Api.GetSearch() method, and pass the parameter raw_query, which should be the query string wanted to use for the search omitting the leading “?”. If a particular search is needed, it is possible to find Twitter’s documentation at https://dev.twitter.com/rest/public/search and go to the [GET /2/tweets/search/recent](https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent) section.<br>
+
+Here an example.
+
+    results = api.GetSearch(
+    raw_query="q=biden%20&result_type=recent&since=2014-07-19&count=100")
+
+In results there will be the Json containing the tweets informations.
 
 
-
-
-
-# Keys
-API Key: ED4UO5J46cH9I53sqexmWwLjD
-API Secret Key: yqdkgb7IJ74fhsPdToQCJpLvv7mRbD17OA8bQVrcLbfdDvLPdH
-Bearer Token: AAAAAAAAAAAAAAAAAAAAAMRsQAEAAAAAML9EySYB7m6g84HM0Zetd7JfU50%3DdZGqD3291tdC71hDsubvnlBSCzLyTcHdcbcbtoeD2CkP1WSd5L
-
-API Key: hKRt285say4MonaRbgY2mvIXe
-API Secret Key: s5Y09TDdb9HY2EZq0HhfzymaYeAjtTzg0IucPASZoEwtbVo0pX
-Bearer Token: AAAAAAAAAAAAAAAAAAAAAOBsQAEAAAAAAp2LPnDkcVJbl1YUz129t7F2W5U%3DnqQ8Y0ISn1wADKCZ9VsmHEj7gGmEn0zXNsPzTzmVswvvLEizs2
 
 
 # References
 [1] https://esrc.ukri.org/research/impact-toolkit/social-media/twitter/what-is-twitter/. Accessed on 27 May 2021.<br>
 [2] https://developer.twitter.com/en/docs/apps/overview. Accessed on 28 May 2021.<br>
 [3] https://en.wikipedia.org/wiki/OAuth. Accessed on 28 May 2021.<br>
+[4] https://python-twitter.readthedocs.io/en/latest/. Accessed on 30 May 2021.<br>
