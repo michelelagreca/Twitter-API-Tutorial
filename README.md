@@ -122,19 +122,23 @@ To search a specific tweet it is possible to use the TwitterAPI.request(). The m
 
 Here an example.
 
-    import requests
-    import json
     r = api.request('search/tweets', {'q':'covid19','count':10, 'expansion':'geo.place'})
-    json_obj1 = r.json()
-    s1 = json.dumps(json_obj1)
-    d2 = json.loads(s1)
-    tweets = d2["statuses"]
+    tweets = r.json()['statuses']
     
-'tweets' is a list of json object, each one refering to a tweet. The length of this list is equal to the parameter 'count' passed to the request() method.
+'api.request()' returns a Twitter response object, and with the method json() is it possible to return the json object.<br>
 
+'tweets' is a list of json object, each one refering to a tweet. The length of this list is equal to the parameter 'count' passed to the request() method.<br>
 
+For instance, let's print some informations about tweets.
 
+    len(tweets)
+    
+<br>
 
+    for tweet in tweets:
+        print(tweet["lang"])
+
+<br><br>
 
 # Twitter API Example - python-twitter
 This section will focus on an example which will explain how to interact with Twitter API. The library that is going to be used is __python-twitter__. This library provides a pure Python interface for the Twitter API.
@@ -172,8 +176,66 @@ Here an example.
     results = api.GetSearch(
     raw_query="q=biden%20&result_type=recent&since=2014-07-19&count=100")
 
-In results there will be an object containing the tweets informations.<br>
+In results there will be an object containing the tweets informations.<br><br>
 
+# Data Analysis
+This last section of the tutorial will focus on a simple analysis of twitter data extracted with Twitter API. The library used for this analysis is TwitterAPI.<br>
+## Scenario
+Vinted is a Lithuanian online marketplace and community that allows its users to sell, buy, and swap new or secondhand clothing items and accessories [5].<br>
+
+The analysis is about Vinted. Vinted is widespread in Europe, and this analysis focuses on what times of the day French people and Italian people prefer to tweet about Vinted.
+## Preparation
+Firstly, the authentication is needed to use Twitter API.
+
+    from TwitterAPI import TwitterAPI
+    api = TwitterAPI(consumer_key, consumer_secret, access_token_key, access_token_secret)
+    
+> __Note__ It is necessary to replace the real keys in place of the sections in brackets
+
+After the authentication, create two dictionaries which will contain for every key (day) a value (list of json object, which basically are either Italian or French Tweets).<br>
+
+    fr_tweets_per_day = {}
+    it_tweets_per_day = {}
+    
+Then, to search a specific tweet it is possible to use the TwitterAPI.request(). The method request() works with all endpoints found in either the REST APIs or the Streaming APIs. Usually request() takes two arguments: a Twitter endpoint and a dictionary of endpoint parameters.<br>
+
+> __Note__ In this case, the parameters are an __hashtag__, __since__, which specifies the minimum creation date that tweets returned by the method will have, __until__, which specifies the maximum creation date that tweets returned by the method will have, and __lang__, which specifies the language of the tweets returned. The analysis is supposing that only French language tweets refers to Vinted French Tweets, as well as Italy<br>
+
+> Since standard Twitter Developer Platform is used, the search is possible only within the last 6 days; therefore, the analysis will be done from 25 May to 31 May.<br>
+
+To insert tweets inside the dictionaries created previously, it is possible to use a for loop in a range between the days choosen for the analysis.<br>
+
+    for i in range(25, 31):
+    j = i + 1
+    r = api.request('search/tweets', {'q':'%23vinted', 'count':100, 'since':'2021-05-'+str(i), 'until':'2021-05-'+str(j), 'lang':'fr'})
+    fr_tweets_per_day[i] = r.json()['statuses']
+<br>
+
+    for i in range(25, 31):
+    j = i + 1
+    r = api.request('search/tweets', {'q':'%23vinted', 'count':100, 'since':'2021-05-'+str(i), 'until':'2021-05-'+str(j), 'lang':'it'})
+    it_tweets_per_day[i] = r.json()['statuses']
+
+Now, both dictionaries contain tweets.<br>
+
+For instance, here all the French Tweets posted on 27 May 2021 about Vinted (the IDs):
+
+    for value in fr_tweets_per_day[27]:
+    print(value['id'])
+    
+Now, let's show the creation date of tweets posted on Twitter by French people on 29 May 2021 in a pretty format:
+
+    import dateutil.parser
+
+    for tweet in fr_tweets_per_day[29]:
+        datestring = tweet['created_at']
+        yourdate = dateutil.parser.parse(datestring)
+        if(yourdate.month < 10):
+            data = str(yourdate.year)+'-0'+str(yourdate.month)+'-'+str(yourdate.day)+' '+str(yourdate.hour)+'-'+str(yourdate.minute)+'-'+str(yourdate.second)
+            print(data)
+        else:
+            data = str(yourdate.year)+'-'+str(yourdate.month)+'-'+str(yourdate.day)+' '+str(yourdate.hour)+'-'+str(yourdate.minute)+'-'+str(yourdate.second)
+            print(data)
 
 
 # References
@@ -181,3 +243,4 @@ In results there will be an object containing the tweets informations.<br>
 [2] https://developer.twitter.com/en/docs/apps/overview. Accessed on 28 May 2021.<br>
 [3] https://en.wikipedia.org/wiki/OAuth. Accessed on 28 May 2021.<br>
 [4] https://python-twitter.readthedocs.io/en/latest/. Accessed on 30 May 2021.<br>
+[5] https://en.wikipedia.org/wiki/Vinted. Accessed on 31 May 2021.<br>
