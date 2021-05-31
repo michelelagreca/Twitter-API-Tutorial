@@ -101,7 +101,42 @@ OAuth is an open standard for access delegation, commonly used as a way for Inte
 
 Generally, OAuth provides clients a "secure delegated access" to server resources on behalf of a resource owner. It specifies a process for resource owners to authorize third-party access to their server resources without providing credentials. Designed specifically to work with Hypertext Transfer Protocol (HTTP), OAuth essentially allows access tokens to be issued to third-party clients by an authorization server, with the approval of the resource owner. The third party then uses the access token to access the protected resources hosted by the resource server [3].<br><br>
 
-# Twitter API Example
+# Twitter API Example - TwitterAPI
+This section will focus on an example which will explain how to interact with Twitter API. The library that is going to be used is __TwitterAPI__. This library provides a pure Python interface for the Twitter API.
+## Installation
+To install the library, go on the terminal and execute:
+
+    pip install TwitterAPI
+    
+## Authentication
+In order to use the python-twitter API client, you first need to acquire a set of application tokens. To get these key, creating an App is necessary. After that, go in that App and click the 'Keys and tokens' section to get the keys.<br>
+
+Then, open a Python file, import twitter and call the function TwitterAPI, passing the keys
+
+    from TwitterAPI import TwitterAPI
+    api = TwitterAPI(consumer_key, consumer_secret, access_token_key, access_token_secret)
+    
+> __Note__ It is necessary to replace the real keys in place of the sections in brackets
+## Search Tweets
+To search a specific tweet it is possible to use the TwitterAPI.request(). The method request() works with all endpoints found in either the REST APIs or the Streaming APIs. Usually request() takes two arguments: a Twitter endpoint and a dictionary of endpoint parameters. If a particular search is needed, it is possible to find Twitter’s documentation at https://dev.twitter.com/rest/public/search and go to the [GET /2/tweets/search/recent](https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent) section.<br>
+
+Here an example.
+
+    import requests
+    import json
+    r = api.request('search/tweets', {'q':'covid19','count':10, 'expansion':'geo.place'})
+    json_obj1 = r.json()
+    s1 = json.dumps(json_obj1)
+    d2 = json.loads(s1)
+    tweets = d2["statuses"]
+    
+'tweets' is a list of json object, each one refering to a tweet. The length of this list is equal to the parameter 'count' passed to the request() method.
+
+
+
+
+
+# Twitter API Example - python-twitter
 This section will focus on an example which will explain how to interact with Twitter API. The library that is going to be used is __python-twitter__. This library provides a pure Python interface for the Twitter API.
 ## Installation
 To install the library, go on the terminal and execute:
@@ -113,7 +148,6 @@ In order to use the python-twitter API client, you first need to acquire a set o
 
 Then, open a Python file, import twitter and call the function twitter.Api(), passing the keys
 
-    import twitter
     import twitter
     api = twitter.Api(consumer_key=[consumer key],
                   consumer_secret=[consumer secret],
@@ -138,8 +172,7 @@ Here an example.
     results = api.GetSearch(
     raw_query="q=biden%20&result_type=recent&since=2014-07-19&count=100")
 
-In results there will be the Json containing the tweets informations.
-
+In results there will be an object containing the tweets informations.<br>
 
 
 
