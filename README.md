@@ -1,5 +1,5 @@
 # Twitter API Tutorial
-In this tutorial there will be a detailed explaination of how to use the Twitter API. <br> This work is going to use __Python__ as programming language.<br><br>
+In this tutorial there will be a detailed explaination of __how to use the Twitter API__. <br> This work is going to use __Python__ as programming language.<br><br>
 # What is Twitter?
 Twitter is a 'microblogging' social network that allows you to send and receive short posts called tweets. Tweets can be up to 140 characters long and can include links to relevant websites and resources.<br>
 
@@ -99,7 +99,7 @@ The standard for authorization used in Twitter API is __OAuth__.
 
 OAuth is an open standard for access delegation, commonly used as a way for Internet users to grant websites or applications access to their information on other websites but without giving them the passwords. This mechanism is used by companies such as Amazon, Google, Facebook, Microsoft and Twitter to permit the users to share information about their accounts with third party applications or websites.
 
-Generally, OAuth provides clients a "secure delegated access" to server resources on behalf of a resource owner. It specifies a process for resource owners to authorize third-party access to their server resources without providing credentials. Designed specifically to work with Hypertext Transfer Protocol (HTTP), OAuth essentially allows access tokens to be issued to third-party clients by an authorization server, with the approval of the resource owner. The third party then uses the access token to access the protected resources hosted by the resource server [3].<br><br>
+Generally, OAuth provides clients a "secure delegated access" to server resources on behalf of a resource owner. It specifies a process for resource owners to authorize third-party access to their server resources without providing credentials. Designed specifically to work with Hypertext Transfer Protocol (HTTP), OAuth essentially allows access tokens to be issued to third-party clients by an authorization server, with the approval of the resource owner. The third party then uses the access token to access the protected resources hosted by the resource server [3].<br><br><br>
 
 # Twitter API Example - TwitterAPI
 This section will focus on an example which will explain how to interact with Twitter API. The library that is going to be used is __TwitterAPI__. This library provides a pure Python interface for the Twitter API.
@@ -109,25 +109,25 @@ To install the library, go on the terminal and execute:
     pip install TwitterAPI
     
 ## Authentication
-In order to use the python-twitter API client, you first need to acquire a set of application tokens. To get these key, creating an App is necessary. After that, go in that App and click the 'Keys and tokens' section to get the keys.<br>
+In order to use the python-twitter API client, you first need to acquire a set of application tokens. To get these key, creating an App is necessary. After that, go in that App and click the __Keys and tokens__ section to get the keys.<br>
 
-Then, open a Python file, import twitter and call the function TwitterAPI, passing the keys
+Then, open a Python file, import twitter and call the function ``TwitterAPI``, passing the keys
 
     from TwitterAPI import TwitterAPI
     api = TwitterAPI(consumer_key, consumer_secret, access_token_key, access_token_secret)
     
 > __Note__ It is necessary to replace the real keys in place of the sections in brackets
 ## Search Tweets
-To search a specific tweet it is possible to use the TwitterAPI.request(). The method request() works with all endpoints found in either the REST APIs or the Streaming APIs. Usually request() takes two arguments: a Twitter endpoint and a dictionary of endpoint parameters. If a particular search is needed, it is possible to find Twitter’s documentation at https://dev.twitter.com/rest/public/search and go to the [GET /2/tweets/search/recent](https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent) section.<br>
+To search a specific tweet it is possible to use the ``TwitterAPI.request()``. The method ``request()`` works with all endpoints found in either the REST APIs or the Streaming APIs. Usually ``request()`` takes two arguments: a Twitter endpoint and a dictionary of endpoint parameters. If a particular search is needed, it is possible to find Twitter’s documentation at https://dev.twitter.com/rest/public/search and go to the [GET /2/tweets/search/recent](https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent) section.<br>
 
 Here an example.
 
     r = api.request('search/tweets', {'q':'covid19','count':10, 'expansion':'geo.place'})
     tweets = r.json()['statuses']
     
-'api.request()' returns a Twitter response object, and with the method json() is it possible to return the json object.<br>
+``api.request()`` returns a Twitter response object, and with the method ``json()`` is it possible to return the json object.<br>
 
-'tweets' is a list of json object, each one refering to a tweet. The length of this list is equal to the parameter 'count' passed to the request() method.<br>
+``tweets`` is a list of json object, each one refering to a tweet. The length of this list is equal to the parameter ``count`` passed to the ``request()`` method.<br>
 
 For instance, let's print some informations about tweets.
 
@@ -148,9 +148,9 @@ To install the library, go on the terminal and execute:
     pip install python-twitter
     
 ## Authentication
-In order to use the python-twitter API client, you first need to acquire a set of application tokens. These will be your consumer_key and consumer_secret, which get passed to twitter.Api() when starting your application [4]. To get these key, creating an App is necessary. After that, go in that App and click the 'Keys and tokens' section to get the keys.<br>
+In order to use the python-twitter API client, you first need to acquire a set of application tokens. These will be your consumer_key and consumer_secret, which get passed to ``twitter.Api()`` when starting your application [4]. To get these key, creating an App is necessary. After that, go in that App and click the __Keys and tokens__ section to get the keys.<br>
 
-Then, open a Python file, import twitter and call the function twitter.Api(), passing the keys
+Then, open a Python file, import twitter and call the function ``twitter.Api()``, passing the keys
 
     import twitter
     api = twitter.Api(consumer_key=[consumer key],
@@ -158,7 +158,7 @@ Then, open a Python file, import twitter and call the function twitter.Api(), pa
                   access_token_key=[access token],
                   access_token_secret=[access token secret])
                   
-It is also possible to get a Bearer token with GetAppOnlyAuthToken(consumer_key, consumer_secret)
+It is also possible to get a Bearer token with ``GetAppOnlyAuthToken(consumer_key, consumer_secret)``
 
     twitter.Api().GetAppOnlyAuthToken(consumer_key, consumer_secret)
 
@@ -169,7 +169,7 @@ The response will be a Json such as
     
 > __Note__ It is necessary to replace the real keys in place of the sections in square brackets
 ## Search Tweets
-To search a specific tweet it is possible to use the Api.GetSearch() method, and pass the parameter raw_query, which should be the query string wanted to use for the search omitting the leading “?”. If a particular search is needed, it is possible to find Twitter’s documentation at https://dev.twitter.com/rest/public/search and go to the [GET /2/tweets/search/recent](https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent) section.<br>
+To search a specific tweet it is possible to use the ``Api.GetSearch()`` method, and pass the parameter ``raw_query``, which should be the query string wanted to use for the search omitting the leading “?”. If a particular search is needed, it is possible to find Twitter’s documentation at https://dev.twitter.com/rest/public/search and go to the [GET /2/tweets/search/recent](https://developer.twitter.com/en/docs/twitter-api/tweets/search/api-reference/get-tweets-search-recent) section.<br>
 
 Here an example.
 
@@ -179,13 +179,13 @@ Here an example.
 In results there will be an object containing the tweets informations.<br><br>
 
 # Data Analysis
-This last section of the tutorial will focus on a simple analysis of twitter data extracted with Twitter API. The library used for this analysis is TwitterAPI.<br>
+This last section of the tutorial will focus on a simple analysis of twitter data extracted with Twitter API. The library used for this analysis is TwitterAPI.<br><br>
 ## Scenario
 Vinted is a Lithuanian online marketplace and community that allows its users to sell, buy, and swap new or secondhand clothing items and accessories [5].<br>
 
-The analysis is about Vinted. Vinted is widespread in Europe, and this analysis focuses on what times of the day French people and Italian people prefer to tweet about Vinted.
+The analysis is about Vinted. Vinted is widespread in Europe, and this analysis focuses on what times of the day French people and Italian people prefer to tweet about Vinted.<br><br>
 ## Preparation
-Firstly, the authentication is needed to use Twitter API.
+Firstly, the authentication is needed to use ``Twitter API``.
 
     from TwitterAPI import TwitterAPI
     api = TwitterAPI(consumer_key, consumer_secret, access_token_key, access_token_secret)
@@ -197,21 +197,24 @@ After the authentication, create two dictionaries which will contain for every k
     fr_tweets_per_day = {}
     it_tweets_per_day = {}
     
-Then, to search a specific tweet it is possible to use the TwitterAPI.request(). The method request() works with all endpoints found in either the REST APIs or the Streaming APIs. Usually request() takes two arguments: a Twitter endpoint and a dictionary of endpoint parameters.<br>
+Then, to search a specific tweet it is possible to use the ``TwitterAPI.request()``. The method ``request()`` works with all endpoints found in either the REST APIs or the Streaming APIs. Usually ``request()`` takes two arguments: a Twitter endpoint and a dictionary of endpoint parameters.<br>
 
 > __Note__ In this case, the parameters are an __hashtag__, __since__, which specifies the minimum creation date that tweets returned by the method will have, __until__, which specifies the maximum creation date that tweets returned by the method will have, and __lang__, which specifies the language of the tweets returned. The analysis is supposing that only French language tweets refers to Vinted French Tweets, as well as Italy<br>
 
-> Since standard Twitter Developer Platform is used, the search is possible only within the last 6 days; therefore, the analysis will be done from 25 May to 31 May.<br>
+> __Note__ Since standard Twitter Developer Platform is used, the search is possible only within the last 6 days; therefore, the analysis will be done from 25 May to 31 May.<br>
+
+    first_day = 25
+    last_day = 30
 
 To insert tweets inside the dictionaries created previously, it is possible to use a for loop in a range between the days choosen for the analysis.<br>
 
-    for i in range(25, 31):
+    for i in range(first_day, last_day + 1):
     j = i + 1
     r = api.request('search/tweets', {'q':'%23vinted', 'count':100, 'since':'2021-05-'+str(i), 'until':'2021-05-'+str(j), 'lang':'fr'})
     fr_tweets_per_day[i] = r.json()['statuses']
 <br>
 
-    for i in range(25, 31):
+    for i in range(first_day, last_day + 1):
     j = i + 1
     r = api.request('search/tweets', {'q':'%23vinted', 'count':100, 'since':'2021-05-'+str(i), 'until':'2021-05-'+str(j), 'lang':'it'})
     it_tweets_per_day[i] = r.json()['statuses']
@@ -220,14 +223,14 @@ Now, both dictionaries contain tweets.<br>
 
 For instance, here all the French Tweets posted on 27 May 2021 about Vinted (the IDs):
 
-    for value in fr_tweets_per_day[27]:
-    print(value['id'])
+    for value in fr_tweets_per_day[first_day + 2]:
+        print(value['id'])
     
 Now, let's show the creation date of tweets posted on Twitter by French people on 29 May 2021 in a pretty format:
 
     import dateutil.parser
 
-    for tweet in fr_tweets_per_day[29]:
+    for tweet in fr_tweets_per_day[first_day + 4]:
         datestring = tweet['created_at']
         yourdate = dateutil.parser.parse(datestring)
         if(yourdate.month < 10):
@@ -236,6 +239,95 @@ Now, let's show the creation date of tweets posted on Twitter by French people o
         else:
             data = str(yourdate.year)+'-'+str(yourdate.month)+'-'+str(yourdate.day)+' '+str(yourdate.hour)+'-'+str(yourdate.minute)+'-'+str(yourdate.second)
             print(data)
+       
+<br><br>
+## Analysis
+Once the creation of the two dictionaries containing for every key (day from 25 to 31) a value (list of json object, which basically are either Italian or French Tweets), the analysis will begin.<br>
+
+Firstly, it is a good choice to create two numpy array 6x6:
+* each one will have 6 rows, each refering to a 4-hours time interval (the first row will refer to tweets posted between 00.00 and 03.59, and so on)
+* each one will have 6 columns, each refering to the day (from 25 to 31) when the tweet has been posted
+
+Both array are will be initialized to zero (int).
+     
+    import numpy as np
+    fr_tweets = np.zeros((6,6)).astype(int)
+    it_tweets = np.zeros((6,6)).astype(int)
+
+After that, both array will be filled: each entry will contain the number of tweet posted within a 4-hours time interval (row) and a specific day (column).<br>
+
+    index = 0
+    for i in range(first_day, last_day + 1):
+        hour_tweet = None
+        for tweet in fr_tweets_per_day[i]:
+            datestring = tweet['created_at']
+            yourdate = dateutil.parser.parse(datestring)
+            if(0 <= yourdate.hour <= 3):
+                fr_tweets[0, index] = fr_tweets[0, index] + 1
+            elif(4 <= yourdate.hour <= 7):
+                fr_tweets[1, index] = fr_tweets[1, index] + 1
+            elif(8 <= yourdate.hour <= 11):
+                fr_tweets[2, index] = fr_tweets[2, index] + 1
+            elif(12 <= yourdate.hour <= 15):
+                fr_tweets[3, index] = fr_tweets[3, index] + 1
+            elif(16 <= yourdate.hour <= 19):
+                fr_tweets[4, index] = fr_tweets[4, index] + 1
+            elif(20 <= yourdate.hour <= 23):
+                fr_tweets[5, index] = fr_tweets[5, index] + 1
+        index = index + 1
+
+    index = 0
+    for i in range(first_day, last_day + 1):
+        hour_tweet = None
+        for tweet in it_tweets_per_day[i]:
+            datestring = tweet['created_at']
+            yourdate = dateutil.parser.parse(datestring)
+            if(0 <= yourdate.hour <= 3):
+                it_tweets[0, index] = it_tweets[0, index] + 1
+            elif(4 <= yourdate.hour <= 7):
+                it_tweets[1, index] = it_tweets[1, index] + 1
+            elif(8 <= yourdate.hour <= 11):
+                it_tweets[2, index] = it_tweets[2, index] + 1
+            elif(12 <= yourdate.hour <= 15):
+                it_tweets[3, index] = it_tweets[3, index] + 1
+            elif(16 <= yourdate.hour <= 19):
+                it_tweets[4, index] = it_tweets[4, index] + 1
+            elif(20 <= yourdate.hour <= 23):
+                it_tweets[5, index] = it_tweets[5, index] + 1
+        index = index + 1
+        
+For instance, the ``fr_tweets[0, 0]`` will contain the number of tweets posted on 25 May between 00:00 and 03:59.<br>
+
+It is also possible to check the correctness of the data by comparing the two final numpy array with the effective posting hour of the tweets.<br>
+
+Now, the analysis will continue with the creation of another array: each entry of this array will contain the mean of tweets posted in the 6 days during a specific 4-hours time interval.<br>
+
+For instance, the first entry of the array will contain the mean of tweets posted between 00:00 and 03:59 calculated for six days.
+
+To better organize data, it is a good practise use __Pandas__ and __Data Frames__.
+
+    import pandas as pd
+    fr_final = pd.DataFrame(np.mean(fr_tweets, axis=1).round(decimals=2), columns=['French tweets mean'], index=['00:00 - 03:59', '04:00 - 07:59', '08:00 - 11:59', '12:00 - 15:59', '16:00 - 19:59', '20:00 - 23:59'])
+    it_final = pd.DataFrame(np.mean(it_tweets, axis=1).round(decimals=2), columns=['Italian tweets mean'], index=['00:00 - 03:59', '04:00 - 07:59', '08:00 - 11:59', '12:00 - 15:59', '16:00 - 19:59', '20:00 - 23:59'])
+    
+The analysis is done. Looking at the last two array, it is quite simple understand that, taking the time interval between 25 May and 31 May, on average French people prefer to post tweets about Vinted between 12:00 and 15:59, while they don't prefer to do it between 00:00 and 03:59.
+
+To better understand the behaviors of this analysis, it is a good choice to __visualize the results__.<br><br>
+
+## Visualization
+To visualize the data frames obtained, it is possible to use the library ``MatPlotLib``.<br>
+    
+    import matplotlib.pyplot as plt
+    plt.close("all")
+    
+    fig = plt.figure(figsize=(16,10))
+    plt.plot(fr_final, label='French Tweets')
+    plt.plot(it_final, label='Italian Tweets')
+    plt.legend(loc="upper left")
+    plt.xlabel('4-hours Time Interval')
+    plt.ylabel('Tweets posted')
+    plt.show()
+
 
 
 # References
