@@ -101,6 +101,104 @@ OAuth is an open standard for access delegation, commonly used as a way for Inte
 
 Generally, OAuth provides clients a "secure delegated access" to server resources on behalf of a resource owner. It specifies a process for resource owners to authorize third-party access to their server resources without providing credentials. Designed specifically to work with Hypertext Transfer Protocol (HTTP), OAuth essentially allows access tokens to be issued to third-party clients by an authorization server, with the approval of the resource owner. The third party then uses the access token to access the protected resources hosted by the resource server [3].<br><br><br>
 
+# Twitter API Example - Official REST API
+This section will focus on an example which will explain how to interact with Twitter API. __The offical Twitter REST API__ are going to be used. It is possible to access to these API through ``cURL``.<br>
+
+The usage of official Twitter API is possible using both __cURL__ and __request in Python__.<br>
+
+* ``cURL`` is a computer software project providing a library (libcurl) and command-line tool (curl) for transferring data using various network protocols. cURL allows to execute command on a terminal.
+* ``request`` in python is a way to use the cURL features into Python. For instance, it is possible to use a tool which will convert cURL commands in Python code.<br>
+
+This section will continue with the explaination of the usage of ``cURL`` in order to access the Tweitter REST API, and then with the description of the same requests in Python.
+## Authentication - cURL
+In order to use Twitter REST API, you first need to acquire a set of application tokens. To get these key, creating an App is necessary. After that, go in that App and click the Keys and tokens section to get the keys.<br>
+
+Now, it is necessary get a __temporary token__:
+        
+    curl --user "$API_KEY:$API_SECRET_KEY" \
+          --data 'grant_type=client_credentials' \
+          'https://api.twitter.com/oauth2/token'
+ 
+The response will be a json object containing:
+ 
+    {"token_type":"bearer","access_token":"AAAAAAAAAAAAAAAAAAAAA……"}
+
+> __Note__ It is necessary to replace the real keys in place of the sections in brackets
+## Search Tweets - cURL
+After the authentication, it is possible to execute some requests to Twitter REST API. For instance, let's search some tweets.
+
+    curl https://api.twitter.com/2/tweets/search/recent?query=(%23palestine)%20lang%3Aen&max_results=10 
+    -H "Authorization: Bearer AAAAAAAAAAAAAAAAAA....."
+
+The response will contain a json object.
+
+## Authentication - Python
+In this case, cURL will be substituted with requests in Python. To do that, it is possible to use a [tool](https://curl.trillworks.com/#) which will convert cURL commands in Python code.<br>
+
+The process will be the same as the cURL one, but it will be able to be runned in Python.
+
+    import requests
+
+    data = {
+      'grant_type': 'client_credentials'
+    }
+
+    response = requests.post('https://api.twitter.com/oauth2/token', data=data, auth=('GQ7ny8Zo2Pa7B1ukVOPPrN0Yl', 'V66iB79Cr9QXCjs9oxLzO9U7QfrfUl5XSKKo72alCTdya10Icg'))
+
+<br>
+
+    response.json()
+    
+## Search Tweets - Python
+The process will be the same as the Tweets Search with cURL, but it will be able to be runned in Python.<br>
+
+    import requests
+
+    headers = {
+        'Authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAAMRsQAEAAAAAtrqo8DI7e9aWNnmqh9iyaA0A42w%3DPhSvY3IgCfrkaY9L89qAG7iACJ7QYvfuFD82FkNIhmxxvjCSaO',
+    }
+
+    params = (
+        ('query', '(#palestine) lang:en'),
+        ('max_results', '10'),
+    )
+
+    response1 = requests.get('https://api.twitter.com/2/tweets/search/recent', headers=headers, params=params)
+    
+<br>
+For instance, let's print the json of the response.
+    
+    response1.json()
+    
+Let's create a list of the response tweets.
+
+    t = response1.json()['data']
+    
+Now, let's parse the list to find the tweets ids, and insert it in a new list.
+
+    ids = []
+    for item in t:
+        ids.append(item['id'])
+        
+Since a Tweets IDs list is available, it is possible to make another cURL request to get all the tweets by their IDs.<br>
+
+Here the cURL command:
+
+    curl "https://api.twitter.com/2/tweets/id" -H "Authorization: Bearer BEARER_TOKEN"
+
+The Python code for this cURL command is:
+
+    import requests
+    texts = []
+    headers = {
+        'Authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAAMRsQAEAAAAAtrqo8DI7e9aWNnmqh9iyaA0A42w%3DPhSvY3IgCfrkaY9L89qAG7iACJ7QYvfuFD82FkNIhmxxvjCSaO',
+    }
+    for item in ids:
+        response2 = requests.get('https://api.twitter.com/2/tweets/'+item, headers=headers)
+        texts.append(response2.json()['data']['text'])
+
+So, the cURL command has been used to request all the tweets according to the ids list. The text of these tweets has been inserted in another list.<br><br><br>
+
 # Twitter API Example - TwitterAPI
 This section will focus on an example which will explain how to interact with Twitter API. The library that is going to be used is __TwitterAPI__. This library provides a pure Python interface for the Twitter API.
 ## Installation
@@ -328,6 +426,20 @@ To visualize the data frames obtained, it is possible to use the library ``MatPl
     plt.ylabel('Tweets posted')
     plt.show()
 
+## Note about the Analysis
+The Data Analysis discussed above has been made with a standard Developer Account. This means that, for instance, the search tweet functionality on Twitter API is restricted to a __recent__ mode, and it allows to get tweets __only within the last 7 days__.<br>
+
+Thus, since the days choosen for the analysis are static (25 May to 31 May), the project will not work if it will be runned after some day. Therefore, change the analyis days would be a solution to let the analsyis work.<br><br><br>
+# Conclusion
+The tutorial was a simple study-case of Twitter API. It introduced both API and Twitter API, explaining:
+* What is API
+* What is Twitter
+* How to be able to use Twitter API
+* How to use Twitter API with Official REST API calls, and some wrapper in Python
+
+It offered also a simple example of a Data Analysis made from Tweets informations obtained from the Twitter API usage.
+
+It is clearly evident that using Twitter API is not hard as it is likely to think, and with a sufficient knowledge of the topics it is possible to use Twitter to develop some interesting projects.
 
 
 # References
