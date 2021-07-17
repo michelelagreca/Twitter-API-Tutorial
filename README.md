@@ -1,4 +1,5 @@
 # Twitter API Tutorial
+This tutorial has been a part of the course that I have taken in my Bachelor of Computer Engineering with the Prof. Antonino Furnari: Social Media Management.
 In this tutorial there will be a detailed explaination of __how to use the Twitter API__. <br> This work is going to use __Python__ as programming language.<br><br>
 # What is Twitter?
 Twitter is a 'microblogging' social network that allows you to send and receive short posts called tweets. Tweets can be up to 140 characters long and can include links to relevant websites and resources.<br>
