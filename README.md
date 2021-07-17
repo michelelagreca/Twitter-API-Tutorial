@@ -277,7 +277,7 @@ Here an example.
 In results there will be an object containing the tweets informations.<br><br>
 
 # Data Analysis
-This last section of the tutorial will focus on a simple analysis of twitter data extracted with Twitter API. The library used for this analysis is TwitterAPI.<br><br>
+This last section of the tutorial will focus on a simple analysis of twitter data extracted with Twitter API. The library used for this analysis is TwitterAPI. The full code is available in the /code directory.<br><br>
 ## Scenario
 Vinted is a Lithuanian online marketplace and community that allows its users to sell, buy, and swap new or secondhand clothing items and accessories [5].<br>
 
@@ -307,15 +307,15 @@ Then, to search a specific tweet it is possible to use the ``TwitterAPI.request(
 To insert tweets inside the dictionaries created previously, it is possible to use a for loop in a range between the days choosen for the analysis.<br>
 
     for i in range(first_day, last_day + 1):
-    j = i + 1
-    r = api.request('search/tweets', {'q':'%23vinted', 'count':100, 'since':'2021-05-'+str(i), 'until':'2021-05-'+str(j), 'lang':'fr'})
-    fr_tweets_per_day[i] = r.json()['statuses']
+            j = i + 1
+            r = api.request('search/tweets', {'q':'%23vinted', 'count':100, 'since':'2021-05-'+str(i), 'until':'2021-05-'+str(j), 'lang':'fr'})
+            fr_tweets_per_day[i] = r.json()['statuses']
 <br>
 
     for i in range(first_day, last_day + 1):
-    j = i + 1
-    r = api.request('search/tweets', {'q':'%23vinted', 'count':100, 'since':'2021-05-'+str(i), 'until':'2021-05-'+str(j), 'lang':'it'})
-    it_tweets_per_day[i] = r.json()['statuses']
+            j = i + 1
+            r = api.request('search/tweets', {'q':'%23vinted', 'count':100, 'since':'2021-05-'+str(i), 'until':'2021-05-'+str(j), 'lang':'it'})
+            it_tweets_per_day[i] = r.json()['statuses']
 
 Now, both dictionaries contain tweets.<br>
 
